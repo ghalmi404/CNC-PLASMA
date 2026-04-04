@@ -284,37 +284,50 @@
     }
 
     /* ======================================== */
-    /* تصميم زر الواتساب - تم إصلاح المشكلة */
+    /* تصميم زر الواتساب - كبير وواضح */
     /* ======================================== */
     
-    /* زر الواتساب العائم */
+    /* زر الواتساب العائم - حجم كبير */
     .whatsapp-float {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 60px;
-      height: 60px;
+      bottom: 25px;
+      left: 25px;
+      width: 70px;
+      height: 70px;
       background-color: #25D366;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      transition: all 0.2s ease;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+      transition: all 0.3s ease;
       z-index: 1000;
       border: none;
       cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
     
     .whatsapp-float:hover {
-      transform: scale(1.08);
+      transform: scale(1.1);
       background-color: #20b859;
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
     }
     
     .whatsapp-float i {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: white;
       display: flex;
       align-items: center;
@@ -322,12 +335,12 @@
       line-height: 1;
     }
     
-    /* شريط الواتساب السفلي */
+    /* شريط الواتساب السفلي - حجم أكبر */
     .whatsapp-bar {
       background: white;
-      padding: 0.8rem 1rem;
+      padding: 1rem 1.2rem;
       margin: 0 1rem 1rem 1rem;
-      border-radius: 3rem;
+      border-radius: 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -336,32 +349,43 @@
     }
     
     .whatsapp-bar-text {
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.95rem;
+      font-weight: 700;
       color: var(--text-dark);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+    
+    .whatsapp-bar-text i {
+      font-size: 1.4rem;
+      color: #25D366;
     }
     
     .btn-wa {
       background: #25D366;
       border: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 2rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 3rem;
       color: white;
-      font-weight: 700;
-      font-size: 0.8rem;
+      font-weight: 800;
+      font-size: 1rem;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       cursor: pointer;
       transition: 0.2s;
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    }
+    
+    .btn-wa i {
+      font-size: 1.2rem;
     }
     
     .btn-wa:hover {
       background: #20b859;
-      transform: scale(1.02);
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
     }
     
     .footer {
@@ -389,14 +413,25 @@
         padding: 0.4rem 1rem;
         font-size: 0.8rem;
       }
+      /* تصغير زر الواتساب قليلاً في الجوال مع بقائه كبيراً */
       .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        left: 15px;
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        left: 20px;
       }
       .whatsapp-float i {
-        font-size: 1.7rem;
+        font-size: 2.2rem;
+      }
+      .whatsapp-bar {
+        padding: 0.8rem 1rem;
+      }
+      .whatsapp-bar-text {
+        font-size: 0.8rem;
+      }
+      .btn-wa {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
       }
     }
 
@@ -479,10 +514,10 @@
 
 <div class="pagination-container" id="paginationContainer"></div>
 
-<!-- شريط الواتساب السفلي -->
+<!-- شريط الواتساب السفلي - حجم كبير -->
 <div class="whatsapp-bar">
   <div class="whatsapp-bar-text">
-    <i class="bi bi-chat-dots-fill" style="color: #25D366;"></i> تواصل معنا لطلب أي تصميم
+    <i class="bi bi-chat-dots-fill"></i> تواصل معنا لطلب أي تصميم
   </div>
   <button class="btn-wa" id="whatsappBottomBtn">
     <i class="bi bi-whatsapp"></i> واتساب
@@ -493,7 +528,7 @@
   <i class="bi bi-cpu"></i> CNC Plasma | قطع بالليزر والبلازما | جميع التصاميم مرقمة وجاهزة للطلب
 </footer>
 
-<!-- زر الواتساب العائم - تم إصلاح محاذاة الأيقونة -->
+<!-- زر الواتساب العائم - حجم كبير مع تأثير نبض -->
 <a href="#" id="whatsappFloatBtn" class="whatsapp-float">
   <i class="bi bi-whatsapp"></i>
 </a>
@@ -569,7 +604,6 @@
       const numMatch = file.name.match(/\d+/);
       const number = numMatch ? parseInt(numMatch[0]) : i + 1;
       
-      // التحقق من وجود الصورة
       const imgUrl = file.download_url || `${baseUrl}/${folder}/${file.name}`;
       
       images.push({
