@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>CNC بلازما | معرض الأبواب والشبابيك</title>
+  <!-- Bootstrap 5 RTL -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f0f4f8;
+      padding: 0;
+      margin: 0;
+    }
+
+    :root {
+      --primary-dark: #0a2b3e;
+      --primary: #1a4a6f;
+      --primary-light: #2c6e9e;
+      --gold: #c6a43f;
+      --gold-light: #dbb859;
+      --text-dark: #1e2a3a;
+      --text-gray: #4a627a;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-pro {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      padding: 1rem 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      padding: 5px;
+    }
+
+    .logo-text h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: white;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text h1 span {
+      color: var(--gold-light);
+    }
+
+    .logo-text p {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+
+    .quick-contact {
+      background: rgba(255,255,255,0.12);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: white;
+      font-weight: 500;
+    }
+
+    .categories-bar {
+      background: white;
+      margin: 1rem 1rem 1.2rem 1rem;
+      border-radius: 1rem;
+      padding: 0.8rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      background: #f0f4f8;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+      transition: all 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .category-btn i {
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    .category-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .category-btn.active i {
+      color: white;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+      padding: 0 1rem 2rem 1rem;
+    }
+
+    .image-card {
+      background: white;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.25s ease;
+      border: 1px solid rgba(0,0,0,0.03);
+      cursor: pointer;
+    }
+
+    .image-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 0.85;
+      background: #eef2f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .image-card:hover .image-wrapper img {
+      transform: scale(1.02);
+    }
+
+    .image-info {
+      padding: 0.9rem 1rem;
+      text-align: center;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .product-number {
+      display: inline-block;
+      background: #eef2ff;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: monospace;
+      letter-spacing: 0.5px;
+    }
+
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0 1rem 2rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    .page-btn {
+      background: white;
+      border: 1px solid #e2e8f0;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.2s;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .page-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .page-btn:hover:not(.active):not(.disabled) {
+      background: #e2e8f0;
+    }
+
+    .page-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* زر رفع الصور */
+    .upload-area {
+      background: white;
+      margin: 1rem;
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 2px dashed var(--gold);
+      display: none;
+    }
+
+    .upload-area.show {
+      display: block;
+    }
+
+    .upload-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .upload-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .file-input-wrapper {
+      border: 1px solid #ddd;
+      border-radius: 0.8rem;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    .file-input-wrapper input {
+      padding: 0.8rem;
+      width: 100%;
+    }
+
+    .upload-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .admin-badge {
+      background: var(--gold);
+      color: var(--primary-dark);
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .instruction {
+      background: #eef2ff;
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #25D366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: all 0.2s;
+      z-index: 1000;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      background: #20b859;
+    }
+
+    .whatsapp-bar {
+      background: white;
+      padding: 0.8rem 1rem;
+      margin: 0 1rem 1rem 1rem;
+      border-radius: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.7rem;
+      color: var(--text-gray);
+      border-top: 1px solid #e2e8f0;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+      }
+      .logo-img {
+        width: 45px;
+        height: 45px;
+      }
+      .logo-text h1 {
+        font-size: 1.2rem;
+      }
+      .category-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    .image-card {
+      animation: fadeIn 0.4s ease backwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-pro">
+  <div class="header-content">
+    <div class="logo-area">
+      <img src="logo.png" alt="شعار المؤسسة" class="logo-img" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <h1>CNC <span>بلازما</span></h1>
+        <p>أبواب · شبابيك · قطع بالبلازما دقة عالية</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- منطقة رفع الصور (تظهر فقط للمدير) -->
+<div class="upload-area" id="uploadArea">
+  <div class="upload-title">
+    <i class="bi bi-cloud-upload-fill"></i>
+    <span>رفع صورة جديدة</span>
+    <span class="admin-badge">مدير</span>
+  </div>
+  <div class="upload-form">
+    <div class="file-input-wrapper">
+      <label><i class="bi bi-image"></i> اختر الصورة:</label>
+      <input type="file" id="imageFile" accept="image/jpeg,image/png,image/jpg,image/webp">
+    </div>
+    <div>
+      <label><i class="bi bi-folder"></i> المجلد:</label>
+      <select id="folderSelect" style="width:100%; padding:0.6rem; border-radius:0.8rem; border:1px solid #ddd; margin-top:5px;">
+        <option value="doors">🚪 أبواب</option>
+        <option value="windows">🪟 نوافذ</option>
+      </select>
+    </div>
+    <button class="upload-btn" id="uploadBtn">
+      <i class="bi bi-save"></i> رفع الصورة
+    </button>
+    <div class="instruction">
+      <i class="bi bi-info-circle"></i> 
+      <strong>ملاحظة مهمة:</strong> سيتم تحميل الصورة إلى مجلد <code>doors/</code> أو <code>windows/</code>.
+      بعد الرفع، اضغط <strong>F5</strong> لتحديث المعرض.
+    </div>
+  </div>
+</div>
+
+<div class="categories-bar">
+  <button class="category-btn active" data-filter="all">
+    <i class="bi bi-grid-3x3-gap-fill"></i> الكل
+  </button>
+  <button class="category-btn" data-filter="door">
+    <i class="bi bi-door-open"></i> أبواب
+  </button>
+  <button class="category-btn" data-filter="window">
+    <i class="bi bi-window"></i> شبابيك
+  </button>
+</div>
+
+<div class="gallery-grid" id="galleryGrid">
+  <div class="text-center p-5" style="color: var(--text-gray);">
+    <i class="bi bi-hourglass-split fs-1"></i><br>
+    جاري تحميل الصور...
+  </div>
+</div>
+
+<div class="pagination-container" id="paginationContainer"></div>
+
+<div class="whatsapp-bar">
+  <div class="whatsapp-bar-text">
+    <i class="bi bi-chat-dots-fill" style="color: #25D366;"></i> تواصل معنا لطلب أي تصميم
+  </div>
+  <button class="btn-wa" id="whatsappBottomBtn" style="background:#25D366; border:none; padding:0.5rem 1.2rem; border-radius:2rem; color:white;">
+    <i class="bi bi-whatsapp"></i> واتساب
+  </button>
+</div>
+
+<footer class="footer">
+  <i class="bi bi-cpu"></i> CNC Plasma | قطع بالليزر والبلازما | جميع التصاميم مرقمة وجاهزة للطلب
+</footer>
+
+<a href="#" id="whatsappFloatBtn" class="whatsapp-float">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<script>
+  // ============================================================
+  // نظام عرض الصور من المجلدات (لـ GitHub Pages)
+  // ============================================================
+  
+  let allImages = [];
+  let currentFilter = "all";
+  let currentPage = 1;
+  const itemsPerPage = 12;
+  let isAdmin = false;
+  
+  let galleryGrid = document.getElementById('galleryGrid');
+  let paginationContainer = document.getElementById('paginationContainer');
+  let categoryBtns = document.querySelectorAll('.category-btn');
+
+  // التحقق من وضع الإدارة
+  function checkAdminMode() {
+    if (window.location.search.includes('admin=1')) {
+      isAdmin = true;
+      document.getElementById('uploadArea').classList.add('show');
+    }
+  }
+
+  // جلب قائمة الصور من مجلد معين باستخدام GitHub API
+  async function fetchImagesFromFolder(folder, category, prefixName) {
+    const repoPath = window.location.pathname.split('/').slice(0, -1).join('/');
+    const baseUrl = window.location.origin + repoPath;
+    
+    // محاولة جلب قائمة الملفات عبر GitHub API (إذا كان المستودع عام)
+    const githubRepo = window.location.hostname === 'localhost' ? null : 
+      `https://api.github.com/repos/${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}/contents/${folder}`;
+    
+    let imageFiles = [];
+    
+    if (githubRepo && !window.location.hostname.includes('localhost')) {
+      try {
+        const response = await fetch(githubRepo);
+        if (response.ok) {
+          const files = await response.json();
+          imageFiles = files.filter(f => 
+            f.name.match(/\.(jpg|jpeg|png|gif|webp)$/i)
+          ).sort((a, b) => {
+            const numA = parseInt(a.name.match(/\d+/)?.[0] || 0);
+            const numB = parseInt(b.name.match(/\d+/)?.[0] || 0);
+            return numA - numB;
+          });
+        }
+      } catch(e) {
+        console.log("GitHub API غير متاح، نستخدم مسار افتراضي");
+      }
+    }
+    
+    // إذا فشل API، نحاول جلب الصور عن طريق الأرقام المتسلسلة
+    if (imageFiles.length === 0) {
+      for (let i = 1; i <= 100; i++) {
+        const imgUrl = `${baseUrl}/${folder}/${i}.jpg`;
+        imageFiles.push({ name: `${i}.jpg`, download_url: imgUrl });
+      }
+    }
+    
+    return imageFiles.map((file, index) => {
+      const numMatch = file.name.match(/\d+/);
+      const number = numMatch ? parseInt(numMatch[0]) : index + 1;
+      return {
+        id: `${folder}_${number}`,
+        number: `${prefixName} ${number.toString().padStart(2, '0')}`,
+        category: category,
+        img: file.download_url || `${baseUrl}/${folder}/${file.name}`
+      };
+    });
+  }
+
+  // تحميل جميع الصور من المجلدات
+  async function loadAllImages() {
+    galleryGrid.innerHTML = '<div class="text-center p-5" style="color: var(--text-gray);"><i class="bi bi-hourglass-split fs-1"></i><br>جاري تحميل الصور...</div>';
+    
+    const [doors, windows] = await Promise.all([
+      fetchImagesFromFolder('doors', 'door', 'باب'),
+      fetchImagesFromFolder('windows', 'window', 'نافذة')
+    ]);
+    
+    allImages = [...doors, ...windows];
+    allImages.sort((a, b) => {
+      const numA = parseInt(a.number.match(/\d+/)?.[0] || 0);
+      const numB = parseInt(b.number.match(/\d+/)?.[0] || 0);
+      return numA - numB;
+    });
+    
+    renderCurrentPage();
+  }
+
+  function getFilteredImages() {
+    if (currentFilter === "door") {
+      return allImages.filter(img => img.category === "door");
+    } else if (currentFilter === "window") {
+      return allImages.filter(img => img.category === "window");
+    }
+    return allImages;
+  }
+
+  function renderCurrentPage() {
+    const filtered = getFilteredImages();
+    const totalPages = Math.ceil(filtered.length / itemsPerPage);
+    
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const imagesToShow = filtered.slice(startIndex, endIndex);
+    
+    galleryGrid.innerHTML = '';
+    
+    if (imagesToShow.length === 0) {
+      galleryGrid.innerHTML = '<div class="text-center p-5" style="color: var(--text-gray);">لا توجد تصاميم في هذا القسم</div>';
+      paginationContainer.innerHTML = '';
+      return;
+    }
+    
+    imagesToShow.forEach((img, idx) => {
+      const card = document.createElement('div');
+      card.className = 'image-card';
+      card.style.animationDelay = `${idx * 0.02}s`;
+      card.innerHTML = `
+        <div class="image-wrapper">
+          <img src="${img.img}" alt="${img.number}" loading="lazy" onerror="this.src='https://placehold.co/600x500/1a4a6f/white?text=CNC+Plasma'">
+        </div>
+        <div class="image-info">
+          <div class="product-number">${img.number}</div>
+        </div>
+      `;
+      galleryGrid.appendChild(card);
+    });
+    
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    if (totalPages <= 1) {
+      paginationContainer.innerHTML = '';
+      return;
+    }
+    
+    let paginationHTML = '';
+    paginationHTML += `<button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})"><i class="bi bi-chevron-right"></i></button>`;
+    
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPages, currentPage + 2);
+    
+    if (startPage > 1) {
+      paginationHTML += `<button class="page-btn" onclick="changePage(1)">1</button>`;
+      if (startPage > 2) paginationHTML += `<span class="page-btn disabled" style="background:transparent;">...</span>`;
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+      paginationHTML += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+    }
+    
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) paginationHTML += `<span class="page-btn disabled" style="background:transparent;">...</span>`;
+      paginationHTML += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
+    }
+    
+    paginationHTML += `<button class="page-btn ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})"><i class="bi bi-chevron-left"></i></button>`;
+    
+    paginationContainer.innerHTML = paginationHTML;
+  }
+
+  window.changePage = function(page) {
+    const filtered = getFilteredImages();
+    const totalPages = Math.ceil(filtered.length / itemsPerPage);
+    if (page >= 1 && page <= totalPages) {
+      currentPage = page;
+      renderCurrentPage();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  function changeFilter(filter) {
+    currentFilter = filter;
+    currentPage = 1;
+    renderCurrentPage();
+    
+    categoryBtns.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('active');
+      }
+    });
+  }
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      changeFilter(filter);
+    });
+  });
+
+  // رفع الصورة (توجيه إلى GitHub - سيفتح نافذة تعليمات)
+  function uploadImage() {
+    const fileInput = document.getElementById('imageFile');
+    const folder = document.getElementById('folderSelect').value;
+    const file = fileInput.files[0];
+    
+    if (!file) {
+      alert('الرجاء اختيار صورة أولاً');
+      return;
+    }
+    
+    // توجيه المستخدم إلى GitHub لعمل الرفع يدوياً
+    alert(`📁 لرفع الصورة إلى مجلد ${folder}:\n\n1. اذهب إلى مستودع GitHub الخاص بك\n2. افتح مجلد ${folder}\n3. اضغط على "Add file" -> "Upload files"\n4. اختر الصورة ${file.name}\n5. اكتب commit message وانشر التغييرات\n\nبعد الرفع، اضغط F5 لتحديث المعرض`);
+    
+    // فتح مستودع GitHub في نافذة جديدة
+    const githubUrl = `https://github.com/${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}/upload/${folder}`;
+    window.open(githubUrl, '_blank');
+    
+    fileInput.value = '';
+  }
+
+  // رقم الواتساب
+  const phoneNumber = "213697347831";
+  
+  function openWhatsapp() {
+    const message = "مرحباً، لقد رأيت التصاميم في معرض CNC بلازما وأود الاستفسار عن بعض المنتجات.";
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  }
+
+  document.getElementById('whatsappFloatBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    openWhatsapp();
+  });
+  
+  document.getElementById('whatsappBottomBtn').addEventListener('click', openWhatsapp);
+  document.getElementById('uploadBtn').addEventListener('click', uploadImage);
+
+  // نسخ رقم المنتج
+  document.addEventListener('click', (e) => {
+    const numberDiv = e.target.closest('.product-number');
+    if (numberDiv) {
+      const numberText = numberDiv.innerText.trim();
+      if (numberText) {
+        navigator.clipboard.writeText(numberText);
+        showToast(`📋 تم نسخ الرقم: ${numberText}`);
+      }
+    }
+  });
+
+  function showToast(msg) {
+    let toast = document.createElement('div');
+    toast.innerText = msg;
+    toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a4a6f;color:#ffdfa5;padding:8px 18px;border-radius:40px;font-size:0.8rem;font-weight:600;z-index:10000;box-shadow:0 4px 12px rgba(0,0,0,0.2);white-space:nowrap';
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 300);
+    }, 1800);
+  }
+
+  checkAdminMode();
+  loadAllImages();
+</script>
+</body>
+</html>
