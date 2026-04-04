@@ -98,6 +98,52 @@
       font-weight: 500;
     }
 
+    .quick-contact i {
+      color: var(--gold-light);
+      font-size: 1rem;
+    }
+
+    /* منطقة رفع الصور (تظهر فقط للمدير) */
+    .upload-area {
+      background: white;
+      margin: 1rem;
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 2px dashed var(--gold);
+      display: none;
+    }
+
+    .upload-area.show {
+      display: block;
+    }
+
+    .upload-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .admin-badge {
+      background: var(--gold);
+      color: var(--primary-dark);
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .instruction {
+      background: #eef2ff;
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+      font-size: 0.75rem;
+      color: var(--primary);
+      margin-top: 1rem;
+    }
+
     .categories-bar {
       background: white;
       margin: 1rem 1rem 1.2rem 1rem;
@@ -237,100 +283,46 @@
       cursor: not-allowed;
     }
 
-    /* زر رفع الصور */
-    .upload-area {
-      background: white;
-      margin: 1rem;
-      border-radius: 1rem;
-      padding: 1rem;
-      border: 2px dashed var(--gold);
-      display: none;
-    }
-
-    .upload-area.show {
-      display: block;
-    }
-
-    .upload-title {
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .upload-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .file-input-wrapper {
-      border: 1px solid #ddd;
-      border-radius: 0.8rem;
-      padding: 0.5rem;
-      text-align: center;
-    }
-
-    .file-input-wrapper input {
-      padding: 0.8rem;
-      width: 100%;
-    }
-
-    .upload-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.8rem;
-      border-radius: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .admin-badge {
-      background: var(--gold);
-      color: var(--primary-dark);
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 800;
-    }
-
-    .instruction {
-      background: #eef2ff;
-      padding: 0.8rem;
-      border-radius: 0.8rem;
-      font-size: 0.75rem;
-      color: var(--primary);
-    }
-
+    /* ======================================== */
+    /* تصميم زر الواتساب - تم إصلاح المشكلة */
+    /* ======================================== */
+    
+    /* زر الواتساب العائم */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background: #25D366;
-      color: white;
-      width: 56px;
-      height: 56px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      text-decoration: none;
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       z-index: 1000;
       border: none;
       cursor: pointer;
-      text-decoration: none;
     }
-
+    
     .whatsapp-float:hover {
       transform: scale(1.08);
-      background: #20b859;
+      background-color: #20b859;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
     }
-
+    
+    .whatsapp-float i {
+      font-size: 2rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    
+    /* شريط الواتساب السفلي */
     .whatsapp-bar {
       background: white;
       padding: 0.8rem 1rem;
@@ -342,7 +334,36 @@
       box-shadow: var(--shadow);
       border: 1px solid #e2e8f0;
     }
-
+    
+    .whatsapp-bar-text {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-wa {
+      background: #25D366;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      color: white;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    
+    .btn-wa:hover {
+      background: #20b859;
+      transform: scale(1.02);
+    }
+    
     .footer {
       text-align: center;
       padding: 1.2rem;
@@ -367,6 +388,22 @@
       .category-btn {
         padding: 0.4rem 1rem;
         font-size: 0.8rem;
+      }
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        left: 15px;
+      }
+      .whatsapp-float i {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
       }
     }
 
@@ -396,6 +433,11 @@
         <p>أبواب · شبابيك · قطع بالبلازما دقة عالية</p>
       </div>
     </div>
+    <div class="quick-contact">
+      <i class="bi bi-telephone-fill"></i>
+      <span>اتصل بنا</span>
+      <i class="bi bi-chevron-left"></i>
+    </div>
   </div>
 </div>
 
@@ -406,26 +448,13 @@
     <span>رفع صورة جديدة</span>
     <span class="admin-badge">مدير</span>
   </div>
-  <div class="upload-form">
-    <div class="file-input-wrapper">
-      <label><i class="bi bi-image"></i> اختر الصورة:</label>
-      <input type="file" id="imageFile" accept="image/jpeg,image/png,image/jpg,image/webp">
-    </div>
-    <div>
-      <label><i class="bi bi-folder"></i> المجلد:</label>
-      <select id="folderSelect" style="width:100%; padding:0.6rem; border-radius:0.8rem; border:1px solid #ddd; margin-top:5px;">
-        <option value="doors">🚪 أبواب</option>
-        <option value="windows">🪟 نوافذ</option>
-      </select>
-    </div>
-    <button class="upload-btn" id="uploadBtn">
-      <i class="bi bi-save"></i> رفع الصورة
-    </button>
-    <div class="instruction">
-      <i class="bi bi-info-circle"></i> 
-      <strong>ملاحظة مهمة:</strong> سيتم تحميل الصورة إلى مجلد <code>doors/</code> أو <code>windows/</code>.
-      بعد الرفع، اضغط <strong>F5</strong> لتحديث المعرض.
-    </div>
+  <div class="instruction">
+    <i class="bi bi-info-circle"></i> 
+    <strong>كيفية إضافة صور جديدة:</strong><br>
+    • ضع الصور في مجلد <code>doors/</code> للأبواب<br>
+    • ضع الصور في مجلد <code>windows/</code> للنوافذ<br>
+    • سمِّ الصور بالأرقام: <code>1.jpg</code>, <code>2.jpg</code>, ...<br>
+    • ارفع الملفات مباشرة عبر GitHub أو استخدم الأمر git push
   </div>
 </div>
 
@@ -450,11 +479,12 @@
 
 <div class="pagination-container" id="paginationContainer"></div>
 
+<!-- شريط الواتساب السفلي -->
 <div class="whatsapp-bar">
   <div class="whatsapp-bar-text">
     <i class="bi bi-chat-dots-fill" style="color: #25D366;"></i> تواصل معنا لطلب أي تصميم
   </div>
-  <button class="btn-wa" id="whatsappBottomBtn" style="background:#25D366; border:none; padding:0.5rem 1.2rem; border-radius:2rem; color:white;">
+  <button class="btn-wa" id="whatsappBottomBtn">
     <i class="bi bi-whatsapp"></i> واتساب
   </button>
 </div>
@@ -463,6 +493,7 @@
   <i class="bi bi-cpu"></i> CNC Plasma | قطع بالليزر والبلازما | جميع التصاميم مرقمة وجاهزة للطلب
 </footer>
 
+<!-- زر الواتساب العائم - تم إصلاح محاذاة الأيقونة -->
 <a href="#" id="whatsappFloatBtn" class="whatsapp-float">
   <i class="bi bi-whatsapp"></i>
 </a>
@@ -490,53 +521,66 @@
     }
   }
 
-  // جلب قائمة الصور من مجلد معين باستخدام GitHub API
+  // جلب قائمة الصور من مجلد معين
   async function fetchImagesFromFolder(folder, category, prefixName) {
     const repoPath = window.location.pathname.split('/').slice(0, -1).join('/');
     const baseUrl = window.location.origin + repoPath;
     
-    // محاولة جلب قائمة الملفات عبر GitHub API (إذا كان المستودع عام)
-    const githubRepo = window.location.hostname === 'localhost' ? null : 
-      `https://api.github.com/repos/${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}/contents/${folder}`;
-    
     let imageFiles = [];
     
-    if (githubRepo && !window.location.hostname.includes('localhost')) {
-      try {
-        const response = await fetch(githubRepo);
-        if (response.ok) {
-          const files = await response.json();
-          imageFiles = files.filter(f => 
-            f.name.match(/\.(jpg|jpeg|png|gif|webp)$/i)
-          ).sort((a, b) => {
-            const numA = parseInt(a.name.match(/\d+/)?.[0] || 0);
-            const numB = parseInt(b.name.match(/\d+/)?.[0] || 0);
-            return numA - numB;
-          });
+    // محاولة جلب قائمة الملفات عبر GitHub API
+    if (!window.location.hostname.includes('localhost')) {
+      const pathParts = window.location.pathname.split('/').filter(p => p);
+      let githubApiUrl = '';
+      
+      if (pathParts.length >= 2) {
+        githubApiUrl = `https://api.github.com/repos/${pathParts[0]}/${pathParts[1]}/contents/${folder}`;
+      }
+      
+      if (githubApiUrl) {
+        try {
+          const response = await fetch(githubApiUrl);
+          if (response.ok) {
+            const files = await response.json();
+            imageFiles = files.filter(f => 
+              f.name.match(/\.(jpg|jpeg|png|gif|webp)$/i)
+            ).sort((a, b) => {
+              const numA = parseInt(a.name.match(/\d+/)?.[0] || 0);
+              const numB = parseInt(b.name.match(/\d+/)?.[0] || 0);
+              return numA - numB;
+            });
+          }
+        } catch(e) {
+          console.log("GitHub API غير متاح");
         }
-      } catch(e) {
-        console.log("GitHub API غير متاح، نستخدم مسار افتراضي");
       }
     }
     
-    // إذا فشل API، نحاول جلب الصور عن طريق الأرقام المتسلسلة
+    // إذا فشل API، نستخدم الأرقام المتسلسلة
     if (imageFiles.length === 0) {
       for (let i = 1; i <= 100; i++) {
-        const imgUrl = `${baseUrl}/${folder}/${i}.jpg`;
-        imageFiles.push({ name: `${i}.jpg`, download_url: imgUrl });
+        imageFiles.push({ name: `${i}.jpg`, download_url: `${baseUrl}/${folder}/${i}.jpg` });
       }
     }
     
-    return imageFiles.map((file, index) => {
+    const images = [];
+    for (let i = 0; i < imageFiles.length; i++) {
+      const file = imageFiles[i];
       const numMatch = file.name.match(/\d+/);
-      const number = numMatch ? parseInt(numMatch[0]) : index + 1;
-      return {
+      const number = numMatch ? parseInt(numMatch[0]) : i + 1;
+      
+      // التحقق من وجود الصورة
+      const imgUrl = file.download_url || `${baseUrl}/${folder}/${file.name}`;
+      
+      images.push({
         id: `${folder}_${number}`,
         number: `${prefixName} ${number.toString().padStart(2, '0')}`,
         category: category,
-        img: file.download_url || `${baseUrl}/${folder}/${file.name}`
-      };
-    });
+        img: imgUrl
+      });
+    }
+    
+    return images;
   }
 
   // تحميل جميع الصور من المجلدات
@@ -555,6 +599,9 @@
       return numA - numB;
     });
     
+    // إزالة الصور المعطوبة
+    allImages = allImages.filter(img => img.img);
+    
     renderCurrentPage();
   }
 
@@ -571,7 +618,7 @@
     const filtered = getFilteredImages();
     const totalPages = Math.ceil(filtered.length / itemsPerPage);
     
-    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
     if (currentPage < 1) currentPage = 1;
     
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -665,42 +712,29 @@
     });
   });
 
-  // رفع الصورة (توجيه إلى GitHub - سيفتح نافذة تعليمات)
-  function uploadImage() {
-    const fileInput = document.getElementById('imageFile');
-    const folder = document.getElementById('folderSelect').value;
-    const file = fileInput.files[0];
-    
-    if (!file) {
-      alert('الرجاء اختيار صورة أولاً');
-      return;
-    }
-    
-    // توجيه المستخدم إلى GitHub لعمل الرفع يدوياً
-    alert(`📁 لرفع الصورة إلى مجلد ${folder}:\n\n1. اذهب إلى مستودع GitHub الخاص بك\n2. افتح مجلد ${folder}\n3. اضغط على "Add file" -> "Upload files"\n4. اختر الصورة ${file.name}\n5. اكتب commit message وانشر التغييرات\n\nبعد الرفع، اضغط F5 لتحديث المعرض`);
-    
-    // فتح مستودع GitHub في نافذة جديدة
-    const githubUrl = `https://github.com/${window.location.pathname.split('/')[1]}/${window.location.pathname.split('/')[2]}/upload/${folder}`;
-    window.open(githubUrl, '_blank');
-    
-    fileInput.value = '';
-  }
-
-  // رقم الواتساب
+  // رقم الواتساب الخاص بك
   const phoneNumber = "213697347831";
   
   function openWhatsapp() {
     const message = "مرحباً، لقد رأيت التصاميم في معرض CNC بلازما وأود الاستفسار عن بعض المنتجات.";
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
   }
 
-  document.getElementById('whatsappFloatBtn').addEventListener('click', (e) => {
-    e.preventDefault();
-    openWhatsapp();
-  });
+  // ربط أزرار الواتساب
+  const whatsappFloatBtn = document.getElementById('whatsappFloatBtn');
+  const whatsappBottomBtn = document.getElementById('whatsappBottomBtn');
   
-  document.getElementById('whatsappBottomBtn').addEventListener('click', openWhatsapp);
-  document.getElementById('uploadBtn').addEventListener('click', uploadImage);
+  if (whatsappFloatBtn) {
+    whatsappFloatBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openWhatsapp();
+    });
+  }
+  
+  if (whatsappBottomBtn) {
+    whatsappBottomBtn.addEventListener('click', openWhatsapp);
+  }
 
   // نسخ رقم المنتج
   document.addEventListener('click', (e) => {
@@ -725,6 +759,7 @@
     }, 1800);
   }
 
+  // بدء التحميل
   checkAdminMode();
   loadAllImages();
 </script>
